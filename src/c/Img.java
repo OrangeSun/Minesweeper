@@ -152,6 +152,7 @@ public static int[][] corArray2(BufferedImage miao) {
 	}
 	public static int[] start1() throws IOException {
 		BufferedImage num1=ImageIO.read(new File("D:/Documents/Minesweeper OrangeSun/c1.jpg"));
+		//请把训练图片移到改file或修改file
 		int[]number1=corArray(num1);
 		return number1;
 	}
