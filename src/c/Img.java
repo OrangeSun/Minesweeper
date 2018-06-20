@@ -16,8 +16,10 @@ public class Img {
 	public static BufferedImage start() {
 		try {
 			robot = new Robot();
-			robot.mouseMove(515, 210);
-			//移动鼠标
+			//robot.mouseMove(515, 210);
+			//移动鼠标 常规
+			robot.mouseMove(845, 540);
+			//移动鼠标 快速
 			robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
 			robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 			//点进窗口
@@ -37,16 +39,14 @@ public class Img {
 		
 	}
 	public static BufferedImage getscreen() {
-		BufferedImage img=robot.createScreenCapture(new Rectangle(435,130,500,500));
+		BufferedImage img=robot.createScreenCapture(new Rectangle(435,130,495,495));
 		return img;
 	}
 	public static int click(int[][]num) {
 		int times=0;
-		int gameover=0;
 		for(int x=0;x<num.length;x++) {
 			for(int y=0;y<num[x].length;y++) {
-				if(num[x][y]==8||num[x][y]>13)return 8;
-				if(num[x][y]==10)gameover++;
+				if(num[x][y]==8)return 8;
 				if(num[x][y]==12) {
 					times++;
 					robot.mouseMove(415+y*55, 110+x*55);
@@ -64,11 +64,7 @@ public class Img {
 				
 			}
 		}
-		if(gameover>=10) {
-			System.out.println("游戏成功啦 ！");
-			return 8;
-		}
-		if(times==0) {
+		if (times==0){
 			for(int x=0;x<num.length;x++) {
 				for(int y=0;y<num[x].length;y++) {
 					if(num[x][y]==9) {
@@ -81,7 +77,9 @@ public class Img {
 					}
 					
 				}
-			}
+
+		}
+			
 		return 0;
 	}
     public static int getCor(int rgb) {

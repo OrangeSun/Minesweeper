@@ -84,9 +84,9 @@ public class Think {
 					
 					if(arr[x+1][y-1]==9)arr[x+1][y-1]=12;
 					
-				else if(arr[x][y]<found) {
+				else if(arr[x][y]<found) {//如果数字小于雷数
 					System.out.println("Error ! 解析出错了，可能是图像分析失误！ ");
-					System.out.println(":"+x+":"+y+":"+arr[x][y]+":"+found);
+					Cmain.send(arr);
 					arr[x][y]=8;
 					return arr;
 				}
@@ -164,7 +164,10 @@ public class Think {
 						}
 						
 					}
-					else {
+					if(arr[x][y]>mytry) {//如果数字比没打开的格子还多
+						System.out.println("Error ! 解析出错了，可能是图像分析失误 ！");
+						Cmain.send(arr);
+						arr[x][y]=8;
 					}
 				}
 				
@@ -222,9 +225,10 @@ public class Think {
 			System.out.println("6#");
 			return 6;
 		}
-		n1+=30;
-		n2-=26;
+		n1+=35;
+		n2-=30;
 		n3-=20;
+		n5-=20;
 		
 		if(n1<=n2&&n1<=n3&&n1<=n4&&n1<=n5&&n1<=n6&&n1<n9&&n1<n0) {
 			System.out.println("1#:"+n1+"："+n2+":"+n3+":"+n4+":"+n5+":"+n6+":"+n0+":"+n9);
@@ -260,7 +264,7 @@ public class Think {
 			}
 	}
 
-	private static int edit(int[] s1, int[] s2) {	
+	public static int edit(int[] s1, int[] s2) {	
 		double d[][];
 		int n;
 		int m;
